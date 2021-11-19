@@ -33,7 +33,7 @@
                                 {{ $category->created_at->diffForHumans(date('Y-m-d\TH:i:sO')) }}
                             </td>
                             <td>
-                                <a href="" class="btn btn-sm btn-primary">Edit</a>
+                                <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-sm btn-primary">Edit</a>
                                 <a href="" class="btn btn-sm btn-danger">Delete</a>
                             </td>
                         </tr>
