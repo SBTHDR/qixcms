@@ -86,10 +86,15 @@
                                     <a href="{{ route('home') }}">Home</a>
                                 </li>
                                 <li class="list-group-item mb-2">
-                                    <a href="">Posts</a>
+                                    <a href="{{ route('posts.index') }}">Posts</a>
                                 </li>
                                 <li class="list-group-item mb-2">
                                     <a href="{{ route('categories.index') }}">Categories</a>
+                                </li>
+                            </ul>
+                            <ul class="list-group mt-5">                                
+                                <li class="list-group-item mb-2">
+                                    <a href="{{ route('trashed.index') }}" class="text-danger">Trashed Posts</a>
                                 </li>
                             </ul>
                         </div>

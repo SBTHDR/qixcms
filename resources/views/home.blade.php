@@ -13,7 +13,9 @@
             @endif
 
             <div>
-                <span class="border border-primary rounded px-3 py-2">Total Category <strong>{{ count($categories) }}</strong></span>
+                <span class="border border-primary rounded px-3 py-2">Total Categories <strong>{{ count($categories) }}</strong></span>
+                <span class="border border-info rounded px-3 py-2">Total Posts <strong>{{ count($posts) }}</strong></span>
+                <span class="border border-danger rounded px-3 py-2">Total Trashed Item <strong>{{ count($trashed) }}</strong></span>
             </div>
         </div>
     </div>

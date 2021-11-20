@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Http\Requests\PostCreateRequest;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -13,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        return view('posts.index')->with('posts', Post::orderBy('id', 'desc')->get());
     }
 
     /**
@@ -23,7 +26,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -32,9 +35,23 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostCreateRequest $request)
     {
-        //
+        $request->image->storeAs(
+            'posts', $request->image->getClientOriginalName()
+        );
+
+        $image = $request->image->getClientOriginalName();
+
+        Post::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'content' => $request->content,
+            'image' => $image,
+            // 'published_id' => $request->published_id,
+        ]);
+
+        return redirect()->route('posts.index')->with('success', 'Post created successfully.');
     }
 
     /**
@@ -79,6 +96,27 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::withTrashed()->where('id', $id)->first();
+
+        if ($post->trashed()) {
+            Storage::delete($post->image);
+            $post->forceDelete();
+        } else {
+            $post->delete();
+        }
+
+        return back()->with('success', 'Post deleted successfully.');
+    }
+
+    /**
+     * List all trashed posts
+     *     
+     * @return \Illuminate\Http\Response
+     */
+    public function trashed()
+    {
+        $trashed = Post::withTrashed()->get();
+
+        return view('posts.index')->with('posts', $trashed);
     }
 }

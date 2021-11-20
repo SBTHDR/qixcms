@@ -17,6 +17,7 @@
         <a href="{{ route('categories.create') }}" class="btn btn-sm btn-primary">Add Category</a>
     </div>
     <div class="card-body">
+        @if ($categories->count() > 0)
         <table class="table">
             <thead>
                 <th>Name</th>
@@ -66,6 +67,9 @@
                 </form>
             </div>
         </div>
+        @else
+            <h5 class="text-center">Categories is empty, create a category.</h5>
+        @endif
     </div>
 </div>
 @endsection
