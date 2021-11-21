@@ -28,7 +28,7 @@
                 </div>
                 <div class="form-group">
                     <label for="content">Post content</label>                  
-                    <input id="content" type="hidden" name="content">
+                    <input id="content" type="hidden" name="content" value="{{ isset($post) ? $post->content : '' }}">
                     <trix-editor input="content"></trix-editor>
                     @error('content')
                         <p class="text-danger">{{ $message }}</p>
@@ -36,8 +36,13 @@
                 </div>
                 <div class="form-group">
                     <label for="published_at">Published Date</label>
-                    <input type="text" name="published_at" id="published_at" class="form-control">                    
+                    <input type="text" name="published_at" id="published_at" class="form-control" value="{{ isset($post) ? $post->published_at : '' }}">                    
                 </div>
+                @if (isset($post))
+                    <div class="form-group">
+                        <img src="{{ asset('uploads/'.$post->image) }}" alt="post_image" width="100%">
+                    </div>
+                @endif
                 <div class="form-group">
                     <label for="image">Post image</label>
                     <input type="file" name="image" id="image" class="form-control">
