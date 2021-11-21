@@ -11,4 +11,14 @@ class Post extends Model
     use HasFactory, SoftDeletes;
 
     protected $guarded = [];
+
+    /**
+     * Delete post image from public uploads
+     * @return void
+     */
+
+    public function deleteImage()
+    {
+        unlink("uploads/".$this->image);
+    }
 }

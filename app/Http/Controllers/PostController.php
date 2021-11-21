@@ -91,7 +91,8 @@ class PostController extends Controller
             $imageDestinationPath = 'uploads/';
             $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($imageDestinationPath, $postImage);
-            unlink("uploads/".$post->image);
+            // unlink("uploads/".$post->image);
+            $post->deleteImage();
             $data['image'] = $postImage;
         }
 
@@ -111,7 +112,7 @@ class PostController extends Controller
         $post = Post::withTrashed()->where('id', $id)->first();
 
         if ($post->trashed()) {
-            unlink("uploads/".$post->image);
+            $post->deleteImage();
             $post->forceDelete();
         } else {
             $post->delete();
@@ -121,14 +122,28 @@ class PostController extends Controller
     }
 
     /**
-     * List all trashed posts
+     * Show only trashed posts
      *     
      * @return \Illuminate\Http\Response
      */
     public function trashed()
     {
-        $trashed = Post::withTrashed()->get();
+        $trashed = Post::onlyTrashed()->get();
 
         return view('posts.index')->with('posts', $trashed);
+    }
+
+    /**
+     * Restore trashed post
+     *     
+     * @return \Illuminate\Http\Response
+     */
+    public function restore($id)
+    {
+        $post = Post::withTrashed()->where('id', $id)->first();
+
+        $post->restore();
+
+        return redirect()->route('posts.index')->with('success', 'Post restored successfully.');
     }
 }
