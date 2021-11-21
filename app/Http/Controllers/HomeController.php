@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $trashed = Post::withTrashed()->get();
+        $trashed = Post::onlyTrashed()->get();
         $categories = Category::all();
         $posts = Post::all();
         return view('home', compact('categories', 'posts', 'trashed'));
