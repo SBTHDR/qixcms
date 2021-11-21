@@ -33,13 +33,13 @@
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
-                {{-- <div class="form-group">
+                <div class="form-group">
                     <label for="published_at">Published Date</label>
                     <input type="date" name="published_at" id="published_at" class="form-control" value="{{ isset($post) ? $post->published_at : '' }}">
                     @error('published_at')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
-                </div> --}}
+                </div>
                 <div class="form-group">
                     <label for="image">Post image</label>
                     <input type="file" name="image" id="image" class="form-control">

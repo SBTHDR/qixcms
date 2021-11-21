@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostCreateRequest;
-use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -37,17 +36,17 @@ class PostController extends Controller
      */
     public function store(PostCreateRequest $request)
     {
-        $request->image->storeAs(
-            'posts', $request->image->getClientOriginalName()
-        );
-
-        $image = $request->image->getClientOriginalName();
+        if ($image = $request->file('image')) {
+            $imageDestinationPath = 'uploads/';
+            $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($imageDestinationPath, $postImage);
+        }
 
         Post::create([
             'title' => $request->title,
             'description' => $request->description,
             'content' => $request->content,
-            'image' => $image,
+            'image' => $postImage,
             // 'published_id' => $request->published_id,
         ]);
 
@@ -99,7 +98,7 @@ class PostController extends Controller
         $post = Post::withTrashed()->where('id', $id)->first();
 
         if ($post->trashed()) {
-            Storage::delete($post->image);
+            unlink("uploads/".$post->image);
             $post->forceDelete();
         } else {
             $post->delete();

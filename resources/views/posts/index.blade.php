@@ -39,7 +39,7 @@
                         {{ $post->content }}
                     </td>
                     <td>
-                        <img src="{{ asset($post->image) }}" alt="">                    
+                        <img src="{{ asset('uploads/'.$post->image) }}" width="120px" alt="">                    
                     </td>
                     {{-- <td>
                         {{ $category->created_at->diffForHumans(date('Y-m-d\TH:i:sO')) }}
