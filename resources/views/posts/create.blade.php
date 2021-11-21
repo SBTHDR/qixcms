@@ -13,30 +13,50 @@
                     @method('PUT')
                 @endif
                 <div class="form-group">
-                    <label for="title">Post Title</label>
+                    <label for="title"><strong>Post Title</strong></label>
                     <input type="text" name="title" id="title" class="form-control" placeholder="Give a post title" value="{{ isset($post) ? $post->title : '' }}">
                     @error('title')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="description">Post Description</label>
-                    <input type="text" name="description" id="description" class="form-control" placeholder="Give a post description" value="{{ isset($post) ? $post->description : '' }}">
+                    <label for="description"><strong>Post Description</strong></label>
+                    <input type="text" name="description" id="description" class="form-control" placeholder="Write a short post description" value="{{ isset($post) ? $post->description : '' }}">
                     @error('description')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="content">Post content</label>                  
+                    <label for="content"><strong>Post Content</strong></label>                  
                     <input id="content" type="hidden" name="content" value="{{ isset($post) ? $post->content : '' }}">
-                    <trix-editor input="content"></trix-editor>
+                    <trix-editor input="content" placeholder="Write post content"></trix-editor>
                     @error('content')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="published_at">Published Date</label>
-                    <input type="text" name="published_at" id="published_at" class="form-control" value="{{ isset($post) ? $post->published_at : '' }}">                    
+                    <label for="published_at"><strong>Published Date</strong></label>
+                    <input type="text" name="published_at" id="published_at" class="form-control" value="{{ isset($post) ? $post->published_at : '' }}" placeholder="Pick a publishing date and time">                     
+                </div>
+                <div class="form-group">
+                    <label for="category"><strong>Category</strong></label>
+                    <select name="category" id="category" class="form-control">
+                        <option value="#">Select a post categoy</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}" 
+                                @if (isset($post))
+                                    @if ($category->id === $post->category_id)
+                                        selected
+                                    @endif
+                                @endif
+                                >
+                                {{ $category->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('category')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror        
                 </div>
                 @if (isset($post))
                     <div class="form-group">
@@ -44,8 +64,10 @@
                     </div>
                 @endif
                 <div class="form-group">
-                    <label for="image">Post image</label>
-                    <input type="file" name="image" id="image" class="form-control">
+                    <label for="image"><strong>Post image</strong></label>
+                    <div class="border border-secondary rounded p-2">
+                        <input type="file" name="image" id="image" class="">
+                    </div>
                     @error('image')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror

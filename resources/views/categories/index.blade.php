@@ -21,6 +21,7 @@
         <table class="table">
             <thead>
                 <th>Name</th>
+                <th>Posts</th>
                 <th>Created at</th>
                 <th>Action</th>
             </thead>
@@ -29,6 +30,9 @@
                 <tr>
                     <td>
                         {{ $category->name }}
+                    </td>
+                    <td>
+                        {{ $category->posts->count() }}
                     </td>
                     <td>
                         {{ $category->created_at->diffForHumans(date('Y-m-d\TH:i:sO')) }}

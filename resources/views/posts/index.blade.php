@@ -21,6 +21,7 @@
         <table class="table">
             <thead>
                 <th>Name</th>
+                <th>Category</th>
                 <th>Description</th>
                 <th>Image</th>
                 <th>Action</th>
@@ -30,6 +31,9 @@
                 <tr>
                     <td>
                         {{ $post->title }}
+                    </td>
+                    <td>
+                        {{ $post->category->name }}
                     </td>
                     <td>
                         {{ $post->description }}

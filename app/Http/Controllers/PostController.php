@@ -6,6 +6,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostCreateRequest;
 use App\Http\Requests\PostUpdateRequest;
+use App\Models\Category;
 
 class PostController extends Controller
 {
@@ -26,7 +27,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $categories = Category::orderBy('id', 'desc')->get();
+        return view('posts.create', compact('categories'));
     }
 
     /**
@@ -49,6 +51,7 @@ class PostController extends Controller
             'content' => $request->content,
             'image' => $postImage,
             'published_at' => $request->published_at,
+            'category_id' => $request->category
         ]);
 
         return redirect()->route('posts.index')->with('success', 'Post created successfully.');
@@ -73,7 +76,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('posts.create')->with('post', $post);
+        return view('posts.create')->with('post', $post)->with('categories', Category::orderBy('id', 'desc')->get());
     }
 
     /**
