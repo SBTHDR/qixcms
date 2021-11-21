@@ -27,18 +27,16 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="content">Post content</label>                    
-                    <textarea name="content" id="content" class="form-control" cols="30" rows="10" placeholder="Give post content">{{ isset($post) ? $post->content : '' }}</textarea>
+                    <label for="content">Post content</label>                  
+                    <input id="content" type="hidden" name="content">
+                    <trix-editor input="content"></trix-editor>
                     @error('content')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="published_at">Published Date</label>
-                    <input type="date" name="published_at" id="published_at" class="form-control" value="{{ isset($post) ? $post->published_at : '' }}">
-                    @error('published_at')
-                        <p class="text-danger">{{ $message }}</p>
-                    @enderror
+                    <input type="text" name="published_at" id="published_at" class="form-control">                    
                 </div>
                 <div class="form-group">
                     <label for="image">Post image</label>
@@ -51,4 +49,20 @@
             </form>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.js" integrity="sha512-/1nVu72YEESEbcmhE/EvjH/RxTg62EKvYWLG3NdeZibTCuEtW5M4z3aypcvsoZw03FAopi94y04GhuqRU9p+CQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    flatpickr('#published_at', {
+        enableTime: true,
+        dateFormat: "Y-m-d H:i",
+    })
+</script>
+@endsection
+
+@section('css')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.css" integrity="sha512-CWdvnJD7uGtuypLLe5rLU3eUAkbzBR3Bm1SFPEaRfvXXI2v2H5Y0057EMTzNuGGRIznt8+128QIDQ8RqmHbAdg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 @endsection

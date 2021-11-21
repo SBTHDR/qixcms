@@ -22,7 +22,6 @@
             <thead>
                 <th>Name</th>
                 <th>Description</th>
-                <th>Content</th>
                 <th>Image</th>
                 <th>Action</th>
             </thead>
@@ -36,14 +35,8 @@
                         {{ $post->description }}
                     </td>
                     <td>
-                        {{ $post->content }}
-                    </td>
-                    <td>
                         <img src="{{ asset('uploads/'.$post->image) }}" width="120px" alt="">                    
                     </td>
-                    {{-- <td>
-                        {{ $category->created_at->diffForHumans(date('Y-m-d\TH:i:sO')) }}
-                    </td> --}}
                     <td class="d-flex">
                         @if (!$post->trashed())
                             <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm btn-primary">Edit</a>

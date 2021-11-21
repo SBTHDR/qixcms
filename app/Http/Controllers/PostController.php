@@ -47,7 +47,7 @@ class PostController extends Controller
             'description' => $request->description,
             'content' => $request->content,
             'image' => $postImage,
-            // 'published_id' => $request->published_id,
+            'published_at' => $request->published_at,
         ]);
 
         return redirect()->route('posts.index')->with('success', 'Post created successfully.');
