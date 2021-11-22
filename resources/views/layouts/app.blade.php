@@ -80,14 +80,14 @@
                     <div class="row">
                         <div class="col-md-4">
                             <ul class="list-group">
+                                <li class="list-group-item mb-2">
+                                    <a href="{{ route('home') }}">Home</a>
+                                </li>
                                 @if (auth()->user()->isAdmin())
                                     <li class="list-group-item mb-2">
                                         <a href="{{ route('users.index') }}">Users</a>
                                     </li>
-                                @endif
-                                <li class="list-group-item mb-2">
-                                    <a href="{{ route('home') }}">Home</a>
-                                </li>
+                                @endif                                
                                 <li class="list-group-item mb-2">
                                     <a href="{{ route('posts.index') }}">Posts</a>
                                 </li>
