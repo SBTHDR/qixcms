@@ -19,13 +19,18 @@
         @if ($users->count() > 0)
         <table class="table">
             <thead>
+                <th>Image</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Role</th>
+                <th>Action</th>
             </thead>
             <tbody>
                 @foreach ($users as $user)
                 <tr>
+                    <td>
+                        <img src="{{ Gravatar::src($user->email) }}" width="40px" style="border-radius: 50%">
+                    </td>
                     <td>
                         {{ $user->name }}
                     </td>
@@ -33,10 +38,19 @@
                         {{ $user->email }}
                     </td>
                     <td>
+                        <span class="text-success"><strong>{{ $user->role }}</strong></span>
+                    </td>
+                    <td>
                         @if (!$user->isAdmin())
-                            <button type="submit" class="btn btn-sm btn-primary">Make Admin</button>
+                            <form action="{{ route('users.admin', $user->id) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-sm btn-primary">Make Admin</button>
+                            </form>
                         @else
-                            <span class="text-success">{{ $user->role }}</span>
+                            <form action="{{ route('users.admin', $user->id) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-sm btn-danger">Remove Admin</button>
+                            </form>
                         @endif                        
                     </td>
                 </tr>

@@ -11,4 +11,17 @@ class UserController extends Controller
     {
         return view('users.index')->with('users', User::orderBy('id', 'desc')->get());
     }
+
+    public function admin(User $user)
+    {
+        if ($user->role === 'writer') {
+            $user->role = 'admin';
+        } else {
+            $user->role = 'writer';
+        };
+
+        $user->save();
+
+        return back();
+    }
 }
