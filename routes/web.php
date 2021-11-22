@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,4 +28,8 @@ Route::middleware(['auth'])->group(function() {
     Route::resource('/posts', PostController::class);
     Route::get('/trashed', [PostController::class, 'trashed'])->name('trashed.index');
     Route::put('/restore/{post}', [PostController::class, 'restore'])->name('restore.update');
+});
+
+Route::middleware(['auth', 'admin'])->group(function() {
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
 });

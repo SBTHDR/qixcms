@@ -18,6 +18,7 @@ class UserFactory extends Factory
         return [
             'name' => 'Aphrodite Livingston',
             'email' => 'memy@mailinator.com',
+            'role' => 'admin',
             'email_verified_at' => now(),
             'password' => Hash::make('passw0rd'),
             'remember_token' => Str::random(10),
