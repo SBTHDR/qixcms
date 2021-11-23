@@ -52,7 +52,8 @@ class PostController extends Controller
             'content' => $request->content,
             'image' => $postImage,
             'published_at' => $request->published_at,
-            'category_id' => $request->category
+            'category_id' => $request->category,
+            'user_id' => auth()->user()->id
         ]);
 
         return redirect()->route('posts.index')->with('success', 'Post created successfully.');

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
@@ -18,7 +19,8 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
-Route::get('/', [BlogController::class, 'index']);
+Route::get('/', [WelcomeController::class, 'index']);
+Route::get('/blogs/{post}', [BlogController::class, 'show'])->name('blogs.show');
 
 Auth::routes();
 
