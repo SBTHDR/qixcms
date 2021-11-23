@@ -19,7 +19,7 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
-Route::get('/', [WelcomeController::class, 'index']);
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 Route::get('/blogs/{post}', [BlogController::class, 'show'])->name('blogs.show');
 
 Auth::routes();
