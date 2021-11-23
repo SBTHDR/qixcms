@@ -17,7 +17,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('posts.index')->with('posts', Post::orderBy('id', 'desc')->get());
+        $posts = Post::with('category')->orderBy('id', 'desc')->get();
+        return view('posts.index', compact('posts'));
     }
 
     /**
