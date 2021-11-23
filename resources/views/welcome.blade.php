@@ -7,7 +7,6 @@
       <div class="container">
         <div class="row">
 
-
           <div class="col-md-8 col-xl-9">
             <div class="row gap-y">
 
@@ -25,14 +24,9 @@
 
             </div>
 
+            {{ $posts->links() }}
 
-            <nav class="flexbox mt-30">
-              <a class="btn btn-white disabled"><i class="fa fa-arrow-circle-left"></i> Newer</a>
-              <a class="btn btn-white" href="#">Older <i class="fa fa-arrow-circle-right"></i></a>
-            </nav>
           </div>
-
-
 
           <div class="col-md-4 col-xl-3">
             <div class="sidebar px-4 py-md-0">
@@ -80,7 +74,6 @@
 
               <h6 class="sidebar-title">About</h6>
               <p class="small-3">Laravel is a web application framework with expressive, elegant syntax. We’ve already laid the foundation — freeing you to create without sweating the small things.</p>
-
 
             </div>
           </div>

@@ -11,7 +11,7 @@ class WelcomeController extends Controller
     public function index()
     {
         $categories = Category::orderBy('id', 'desc')->get();
-        $posts = Post::with('category')->orderBy('id', 'desc')->get();
+        $posts = Post::with('category')->orderBy('id', 'desc')->simplePaginate(1);
         return view('welcome', compact('posts', 'categories'));
     }
 }
