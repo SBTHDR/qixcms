@@ -27,7 +27,7 @@ class PostUpdateRequest extends FormRequest
             'title' => ['required'],
             'description' => ['required'],
             'content' => ['required'],
-            'category' => ['required'],
+            'category' => ['required', 'integer'],
         ];
     }
 }
