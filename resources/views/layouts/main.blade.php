@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
 
-    <title>UmiCMS | Ttch Blog</title>
+    <title>QixCms | Ttch Blog</title>
 
     <!-- Styles -->
     <link href="{{ asset('frontend/css/page.min.css') }}" rel="stylesheet">
@@ -27,7 +27,7 @@
         <div class="navbar-left">
           <button class="navbar-toggler" type="button">&#9776;</button>
           <a class="navbar-brand" href="{{ route('welcome') }}">
-            <h2 class="text-white"><strong>UmiCMS</strong></h2>
+            <h2 class="text-white"><strong>QixCms</strong></h2>
           </a>
         </div>
 
@@ -36,18 +36,19 @@
 
           <ul class="nav nav-navbar">
             
+            {{-- Features to be added --}}
             <li class="nav-item">
-              <a class="nav-link" href="#">Links <span class="arrow"></span></a>
+              <a class="nav-link" href="#">Affiliate <span class="arrow"></span></a>
               <nav class="nav">
-                <a class="nav-link" href="/">Home</a>
-                <a class="nav-link" href="/blogs">Blog</a>
+                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" href="#">Blog</a>
                 <a class="nav-link" href="#">About</a>
                 <a class="nav-link" href="#">Contact</a>
               </nav>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="/blogs">Blog</a>
+                <a class="nav-link" href="#">Blog</a>
             </li>
 
             <li class="nav-item">
@@ -74,7 +75,7 @@
         <div class="row">
           <div class="col-md-8 mx-auto">
 
-            <h1>UmiCMS Tech Blog</h1>
+            <h1>QixCms Tech Blog</h1>
             <p class="lead-2 opacity-90 mt-6">New blog post about tech every day.</p>
 
           </div>
