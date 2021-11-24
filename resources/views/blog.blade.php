@@ -6,7 +6,7 @@
 
       <div class="text-center mt-8">
         <h2>{{ $post->title }}</h2>
-        <p>{{ $post->user->name }} at {{ $post->published_at }} in <a href="#">{{ $post->category->name }}</a></p>
+        <p>{{ $post->user->name }} at {{ $post->created_at->diffForHumans(date('Y-m-d\TH:i:sO')) }} in <a href="#">{{ $post->category->name }}</a></p>
       </div>
       
 

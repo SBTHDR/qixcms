@@ -13,6 +13,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -96,8 +97,9 @@
                                 </li>
                             </ul>
                             <ul class="list-group mt-5">                                
-                                <li class="list-group-item mb-2">
+                                <li class="list-group-item mb-2 d-flex align-items-center justify-content-between">
                                     <a href="{{ route('trashed.index') }}" class="text-danger">Trashed Posts</a>
+                                    <i class="fa fa-trash text-danger"></i>
                                 </li>
                             </ul>
                         </div>
