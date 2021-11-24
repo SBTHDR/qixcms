@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TagController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,7 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::resource('/categories', CategoryController::class);
     Route::resource('/posts', PostController::class);
+    Route::resource('/tags', TagController::class);
     Route::get('/trashed', [PostController::class, 'trashed'])->name('trashed.index');
     Route::put('/restore/{post}', [PostController::class, 'restore'])->name('restore.update');
 });

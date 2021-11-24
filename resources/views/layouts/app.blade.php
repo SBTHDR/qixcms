@@ -88,13 +88,16 @@
                                     <li class="list-group-item mb-2">
                                         <a href="{{ route('users.index') }}">Users</a>
                                     </li>
-                                @endif                                
+                                @endif
+                                <li class="list-group-item mb-2">
+                                    <a href="{{ route('tags.index') }}">Tags</a>
+                                </li>                         
                                 <li class="list-group-item mb-2">
                                     <a href="{{ route('posts.index') }}">Posts</a>
                                 </li>
                                 <li class="list-group-item mb-2">
                                     <a href="{{ route('categories.index') }}">Categories</a>
-                                </li>
+                                </li>                                
                             </ul>
                             <ul class="list-group mt-5">                                
                                 <li class="list-group-item mb-2 d-flex align-items-center justify-content-between">

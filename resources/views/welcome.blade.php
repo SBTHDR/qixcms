@@ -21,9 +21,9 @@
                       </div>
                   </div>
               @empty
-                  <h5 class="text-center">
-                    No results were found for query <span class="text-danger"> "{{ request()->query('search') }}"</span> 
-                  </h5>
+                <h5 class="text-center">
+                  No results were found for query <span class="text-danger"> {{ request()->query('search') }}</span> 
+                </h5>
               @endforelse                
 
             </div>
