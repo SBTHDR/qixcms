@@ -54,7 +54,28 @@
                         <form action="{{ route('posts.destroy', $post->id) }}" method="POST" class="ml-2">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger">{{ $post->trashed() ? 'Delete' : 'Trash' }}</button>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#exampleModal">{{ $post->trashed() ? 'Delete' : 'Trash' }}</button>
+                            
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    </div>
+                                    <div class="modal-body">
+                                    <h4>Are you sure?</h4>
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Cancle</button>
+                                    <button type="submit" class="btn btn-sm btn-danger">{{ $post->trashed() ? 'Delete' : 'Trash' }}</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
                         </form>
                     </td>
                 </tr>
