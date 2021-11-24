@@ -21,7 +21,7 @@
         <table class="table">
             <thead>
                 <th>Name</th>
-                {{-- <th>Posts</th> --}}
+                <th>Taged with posts</th>
                 <th>Created at</th>
                 <th>Action</th>
             </thead>
@@ -31,9 +31,9 @@
                     <td>
                         {{ $tag->name }}
                     </td>
-                    {{-- <td>
+                    <td>
                         {{ $tag->posts->count() }}
-                    </td> --}}
+                    </td>
                     <td>
                         {{ $tag->created_at->diffForHumans(date('Y-m-d\TH:i:sO')) }}
                     </td>

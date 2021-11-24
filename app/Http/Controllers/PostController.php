@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\PostCreateRequest;
 use App\Http\Requests\PostUpdateRequest;
 use App\Models\Category;
+use App\Models\Tag;
 
 class PostController extends Controller
 {
@@ -29,7 +30,8 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::orderBy('id', 'desc')->get();
-        return view('posts.create', compact('categories'));
+        $tags = Tag::orderBy('id', 'desc')->get();
+        return view('posts.create', compact('categories', 'tags'));
     }
 
     /**
@@ -46,7 +48,7 @@ class PostController extends Controller
             $image->move($imageDestinationPath, $postImage);
         }
 
-        Post::create([
+        $post = Post::create([
             'title' => $request->title,
             'description' => $request->description,
             'content' => $request->content,
@@ -55,6 +57,10 @@ class PostController extends Controller
             'category_id' => $request->category,
             'user_id' => auth()->user()->id
         ]);
+
+        if ($request->tags) {
+            $post->tags()->attach($request->tags);
+        }
 
         return redirect()->route('posts.index')->with('success', 'Post created successfully.');
     }
@@ -78,7 +84,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('posts.create')->with('post', $post)->with('categories', Category::orderBy('id', 'desc')->get());
+        $categories = Category::orderBy('id', 'desc')->get();
+        $tags = Tag::orderBy('id', 'desc')->get();
+        return view('posts.create', compact('post', 'categories', 'tags'));
     }
 
     /**
@@ -99,6 +107,10 @@ class PostController extends Controller
             // unlink("uploads/".$post->image);
             $post->deleteImage();
             $data['image'] = $postImage;
+        }
+
+        if ($request->tags) {
+            $post->tags()->sync($request->tags);
         }
 
         $post->update($data);
