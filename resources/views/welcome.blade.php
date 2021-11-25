@@ -67,11 +67,9 @@
 
               <h6 class="sidebar-title">Tags</h6>
               <div class="gap-multiline-items-1">
-                <a class="badge badge-secondary" href="#">Development</a>
-                <a class="badge badge-secondary" href="#">Web</a>
-                <a class="badge badge-secondary" href="#">UI/UX</a>
-                <a class="badge badge-secondary" href="#">Laravel</a>
-                <a class="badge badge-secondary" href="#">Software</a>
+                  @foreach ($tags as $tag)
+                    <a class="badge badge-secondary" href="#">{{ $tag->name }}</a>
+                  @endforeach
               </div>
 
               <hr>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
@@ -18,6 +19,7 @@ class WelcomeController extends Controller
         }
 
         $categories = Category::orderBy('id', 'desc')->get();
-        return view('welcome', compact('posts', 'categories'));
+        $tags = Tag::orderBy('id', 'desc')->get();
+        return view('welcome', compact('posts', 'categories', 'tags'));
     }
 }

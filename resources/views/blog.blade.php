@@ -30,10 +30,9 @@
       <div class="row">
         <div class="col-lg-8 mx-auto">
           <div class="gap-xy-2 mt-6">
-            <a class="badge badge-pill badge-secondary" href="#">Record</a>
-            <a class="badge badge-pill badge-secondary" href="#">Progress</a>
-            <a class="badge badge-pill badge-secondary" href="#">Customers</a>
-            <a class="badge badge-pill badge-secondary" href="#">News</a>
+            @foreach ($post->tags as $tag)
+              <a class="badge badge-pill badge-secondary" href="#">{{ $tag->name }}</a>
+            @endforeach
           </div>
 
         </div>
