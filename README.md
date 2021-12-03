@@ -5,6 +5,10 @@
 
 QixCms is a content management system. built with Laravel 8
 
+## Demo
+
+[QixCms](http://obscure-wave-41298.herokuapp.com/)
+
 
 ## Tech 
 
